@@ -1,0 +1,69 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+>
+    <Table
+        sticky="HeaderToolbar,ColumnHeaders"
+        inset="false"
+        items="{
+							path: '/Suppliers'
+						}"
+        class="sapFDynamicPageAlignContent"
+        width="auto"
+    >
+        <headerToolbar>
+            <Toolbar>
+                <Title
+                    text="{i18n>tableTitle}"
+                    level="H2"
+                />
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="{i18n>idColumnName}" />
+            </Column>
+            <Column
+                minScreenWidth="Tablet"
+                demandPopin="true"
+            >
+                <Text text="{i18n>companyColumName}" />
+            </Column>
+            <Column
+                minScreenWidth="Tablet"
+                demandPopin="true"
+                hAlign="End"
+            >
+                <Text text="{i18n>cityColumName}" />
+            </Column>
+            <Column hAlign="End">
+                <Text text="{i18n>countryColumName}" />
+            </Column>
+            <Column hAlign="End">
+                <Text text="{i18n>contactColumName}" />
+            </Column>
+            <Column hAlign="End">
+                <Text text="{i18n>contactTitleColumName}" />
+            </Column>
+            <Column hAlign="End">
+                <Text text="{i18n>phoneColumName}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem
+                vAlign="Middle"
+                type="Active"
+            >
+                <cells>
+                    <ObjectIdentifier title="{SupplierID}" />
+                    <Text text="{CompanyName}" />
+                    <Text text="{City}" />
+                    <Text text="{Country}" />
+                    <Text text="{ContactName}" />
+                    <Text text="{ContactTitle}" />
+                    <Text text="{Phone}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</c:FragmentDefinition>
