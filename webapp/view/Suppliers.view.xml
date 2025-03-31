@@ -1,6 +1,29 @@
 <mvc:View controllerName="com.bootcamp.sapui5.suppliersapp.controller.Suppliers"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+	xmlns:c="sap.ui.core">
+    <f:DynamicPage id="page">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+				    <Title text="{i18n>title}"/>
+			    </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+			<VBox>
+				<HBox>
+                    <c:Fragment
+                        fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.SupplierFilters"
+                        type="XML"
+                    />
+                </HBox>
+				<c:Fragment
+                	fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.SuppliersTable"
+                	type="XML"
+                />
+			</VBox>
+        </f:content>
+    </f:DynamicPage>
 </mvc:View>

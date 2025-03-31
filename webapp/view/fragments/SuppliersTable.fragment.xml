@@ -1,0 +1,85 @@
+<c:FragmentDefinition
+    xmlns="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+>
+    <Table
+        id="table"
+        rows="{/Suppliers}"
+        class="sapFDynamicPageAlignContent"
+        selectionMode="Single"
+        selectionBehavior="Row"
+        alternateRowColors="true"
+        width="auto"
+        rowSelectionChange=".onRowSelected"
+    >
+        <extension>
+			<m:OverflowToolbar style="Clear">
+				<m:Title id="title" text="{i18n>tableTitle}"/>
+				<m:ToolbarSpacer/>
+				<m:Button
+					icon="sap-icon://decline"
+					tooltip="{i18n>clearSorting}"
+					press="clearAllSortings"/>
+			</m:OverflowToolbar>
+		</extension>
+        <columns>
+            <Column 
+                id="id"
+				width="6rem"
+				sortProperty="SupplierID">
+				<m:Label text="{i18n>idColumnName}" />
+                <template>
+					<m:Text text="{SupplierID}" wrapping="false" />
+				</template>
+            </Column>
+            <Column 
+                id="companyName"
+				sortProperty="CompanyName">
+				<m:Label text="{i18n>companyColumnName}" />
+                <template>
+					<m:Text text="{CompanyName}" wrapping="false" />
+				</template>
+            </Column>
+            <Column 
+                id="cityName"
+				sortProperty="City">
+				<m:Label text="{i18n>cityColumnName}" />
+                <template>
+					<m:Text text="{City}" wrapping="false" />
+				</template>
+            </Column>
+            <Column 
+                id="countryName"
+				sortProperty="Country">
+				<m:Label text="{i18n>countryColumnName}" />
+                <template>
+					<m:Text text="{Country}" wrapping="false" />
+				</template>
+            </Column>
+            <Column 
+                id="contactName"
+				sortProperty="ContactName">
+				<m:Label text="{i18n>contactColumnName}" />
+                <template>
+					<m:Text text="{ContactName}" wrapping="false" />
+				</template>
+            </Column>
+            <Column 
+                id="contactTitle"
+				sortProperty="ContactTitle">
+				<m:Label text="{i18n>contactTitleColumnName}" />
+                <template>
+					<m:Text text="{ContactTitle}" wrapping="false" />
+				</template>
+            </Column>
+            <Column>
+				<m:Label text="{i18n>phoneColumnName}" />
+                <template>
+					<m:Text text="{Phone}" wrapping="false" />
+				</template>
+            </Column>
+        </columns>
+    </Table>
+</c:FragmentDefinition>
