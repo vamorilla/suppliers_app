@@ -2,14 +2,51 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:f="sap.f"
+    xmlns:lf="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
-    <f:DynamicPage id="detailPage">
-        <f:title>
-            <f:DynamicPageTitle>
-                <f:heading>
-				    <Title text="{i18n>detailTitle}"/>
-			    </f:heading>
-            </f:DynamicPageTitle>
-        </f:title>
-    </f:DynamicPage>
+    <Page id="detailPage">
+        <VBox class="sapUiSmallMargin">
+            <lf:SimpleForm id="SimpleFormDisplay354wideDual"
+			    editable="false"
+			    layout="ResponsiveGridLayout"
+			    title="{i18n>detailTitle}"
+			    labelSpanXL="4"
+			    labelSpanL="3"
+			    labelSpanM="4"
+			    labelSpanS="12"
+			    adjustLabelSpan="false"
+			    emptySpanXL="0"
+			    emptySpanL="4"
+			    emptySpanM="0"
+			    emptySpanS="0"
+			    columnsXL="2"
+			    columnsL="1"
+			    columnsM="1"
+			    singleContainerFullSize="false" >
+			    <lf:content>
+				    <core:Title/>
+				    <Label text="{i18n>companyColumnName}" />
+				    <Text text="{CompanyName}" />
+
+				    <Label text="{i18n>address}" />
+				    <Text text="{Address}" />
+
+				    <Label text="{i18n>cityColumnName}" />
+				    <Text text="{City}" />
+
+                    <Label text="{i18n>countryColumnName}" />
+				    <Text text="{Country}" />
+
+				    <core:Title />
+                    <Label text="{i18n>contactColumnName}" />
+				    <Text text="{ContactName}" />
+				    <Label text="{i18n>contactTitleColumnName}" />
+				    <Text text="{ContactTitle}" />
+
+                    <Label text="{i18n>phoneColumnName}" />
+				    <Text text="{Phone}" />
+			    </lf:content>
+		    </lf:SimpleForm>
+        </VBox>
+    </Page>
 </mvc:View>

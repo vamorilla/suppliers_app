@@ -67,6 +67,7 @@ sap.ui.define([
 
             if (oContext) {
                 const oSupplier = oContext.getObject();
+                console.log(oSupplier)
         
                 this.oRouter.navTo("detail", {
                     SupplierID: oSupplier.SupplierID

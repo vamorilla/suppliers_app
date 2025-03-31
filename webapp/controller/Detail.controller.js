@@ -10,7 +10,7 @@ sap.ui.define([
         },
 
         _onObjectMatched: function (oEvent) {
-            let sSupplierID = oEvent.getParameter("arguments").ProductID;
+            let sSupplierID = oEvent.getParameter("arguments").SupplierID;
 
             this.getView().bindElement({
                 path: "/Suppliers(" + sSupplierID + ")",
