@@ -22,5 +22,19 @@ sap.ui.define([
 		getDataSuppliers: async function(aFilters) {
             return SuppliersService.getSuppliers(this._oNorthwindModel, aFilters);
         },
+
+        setEmptyProductModel: function (oComponent) {
+            oComponent.setModel(new JSONModel({
+                ProductName: "",
+                UnitPrice: "",
+                UnitsInStock: "",
+                CategoryID: "",
+                SupplierID: ""
+            }), "ProductModel")
+        },
+
+        createProductModelFromExisting: function (oProduct) {
+            return new JSONModel(Object.assign({}, oProduct));
+        }
 	};
 });

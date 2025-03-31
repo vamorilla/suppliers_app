@@ -4,7 +4,7 @@ sap.ui.define([
     "sap/ui/core/library",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/Filter",
-], (Controller, Sorter, CoreLibrary, FilterOperator, Filter ) => {
+], (Controller, CoreLibrary, FilterOperator, Filter ) => {
     "use strict";
 
     const SortOrder = CoreLibrary.SortOrder;
@@ -67,7 +67,6 @@ sap.ui.define([
 
             if (oContext) {
                 const oSupplier = oContext.getObject();
-                console.log(oSupplier)
         
                 this.oRouter.navTo("detail", {
                     SupplierID: oSupplier.SupplierID

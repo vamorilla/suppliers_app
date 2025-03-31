@@ -29,6 +29,7 @@ sap.ui.define([
         setInitModel: function () {
             SuppliersHelper.init(this.getModel());
             SuppliersHelper.setInitLocalDataModel(this);
+            SuppliersHelper.setEmptyProductModel(this);
         } 
     });
 });

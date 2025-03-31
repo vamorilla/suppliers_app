@@ -1,0 +1,74 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    
+    <Dialog
+        id="productDialog"
+        title="{= ${viewFlags>/isCreating} ? ${i18n>createProduct} : ${i18n>seeProduct} }"
+        class="sapUiContentPadding"
+        draggable="true"
+        resizable="true"
+    >
+        <VBox>
+            <!-- Product Name -->
+            <Label text="{i18n>productNameLabel}" required="true" />
+            <Input
+                value="{ProductModel>/ProductName}"
+                placeholder="{i18n>productNamePholder}"
+                valueState="{= ${ProductModel>/ProductName} ? 'None' : 'Error' }"
+                valueStateText="{i18n>errorText}"
+                editable="{viewFlags>/isCreating}"
+            />
+
+            <!-- Price -->
+            <Label text="{i18n>productPriceLabel}" required="true" />
+            <Input
+                value="{ProductModel>/UnitPrice}"
+                type="Number"
+                placeholder="E{i18n>productPricePholder}"
+                valueState="{= ${ProductModel>/UnitPrice} ? 'None' : 'Error' }"
+                valueStateText="{i18n>errorText}"
+                editable="{viewFlags>/isCreating}"
+            />
+
+            <!-- Stock -->
+            <Label text="{i18n>Stock}" required="true" />
+            <Input
+                value="{ProductModel>/UnitsInStock}"
+                type="Number"
+                placeholder="{i18n>productStockPholder}"
+                valueState="{= ${ProductModel>/UnitsInStock} ? 'None' : 'Error' }"
+                valueStateText="{i18n>errorText}"
+                editable="{viewFlags>/isCreating}"
+            />
+
+            <!-- Category -->
+            <Label text="Category" required="true" />
+            <Select
+                selectedKey="{ProductModel>/CategoryID}"
+                items="{
+                    path: '/Categories',
+                    model: 'mainModel'
+                }"
+                forceSelection="true"
+                change=".onCategoryChange"
+                valueStateText="{i18n>errorText}"
+                enabled="{viewFlags>/isCreating}"
+            >
+                <core:Item key="{CategoryID}" text="{CategoryName}" />
+            </Select>
+        </VBox>
+        <beginButton>
+            <Button
+                text="{i18n>createBtnDialog}"
+                type="Emphasized"
+                press=".onCreateProduct"
+                visible="{= ${viewFlags>/isCreating} }"
+            />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press=".onCloseDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
