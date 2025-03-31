@@ -24,6 +24,7 @@ sap.ui.define([
         },
 
         onAddProduct: function () {
+            const oComponent = this.getOwnerComponent();
             SuppliersHelper.setEmptyProductModel(oComponent);
             this._openProductDialog(true);
         },

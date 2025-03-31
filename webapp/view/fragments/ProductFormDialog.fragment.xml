@@ -26,7 +26,7 @@
             <Input
                 value="{ProductModel>/UnitPrice}"
                 type="Number"
-                placeholder="E{i18n>productPricePholder}"
+                placeholder="{i18n>productPricePholder}"
                 valueState="{= ${ProductModel>/UnitPrice} ? 'None' : 'Error' }"
                 valueStateText="{i18n>errorText}"
                 editable="{viewFlags>/isCreating}"
