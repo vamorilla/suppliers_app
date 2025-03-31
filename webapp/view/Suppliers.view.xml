@@ -12,10 +12,17 @@
             </f:DynamicPageTitle>
         </f:title>
         <f:content>
-            <c:Fragment
-                fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.SuppliersTable"
-                type="XML"
-            />
+			<VBox>
+				<HBox>
+					<VBox class="sapUiSmallMarginEnd">
+                    
+                    </VBox>
+				</HBox>
+				<c:Fragment
+                	fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.SuppliersTable"
+                	type="XML"
+                />
+			</VBox>
         </f:content>
     </f:DynamicPage>
 </mvc:View>
