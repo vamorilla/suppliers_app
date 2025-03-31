@@ -15,7 +15,7 @@ sap.ui.define([
             this.getView().bindElement({
                 path: "/Suppliers(" + sSupplierID + ")",
                 parameters: {
-                    expand: "Products"
+                    expand: "Products,Products/Category"
                 }
             });
         },
