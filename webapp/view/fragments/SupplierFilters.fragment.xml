@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f">
+
+     <FlexBox
+        wrap="Wrap"
+        direction="Row"
+        alignItems="End"
+        justifyContent="Start"
+        class="sapUiSmallMarginBottom"
+    >
+        <HBox justifyContent="End" class="sapUiSmallMarginBottom">
+            <VBox class="sapUiSmallMarginEnd">
+                <Label text="{i18n>supplierIdLabel}" labelFor="idSupplier" />
+                <Input
+                    id="idSupplier"
+                    width="200px"
+                    value="{LocalDataModel>/idInputValue}"
+                    placeholder="{i18n>idInputPlaceholder}"/>
+            </VBox>
+            <VBox class="sapUiSmallMarginEnd">
+                <Label text="{i18n>companyNamelabel}" labelFor="companyNameInput" />
+                <Input
+                    id="companyNameInput"
+                    width="200px"
+                    value="{LocalDataModel>/nameInputValue}"
+                    placeholder="{i18n>cNamePlaceholder}"/>
+            </VBox>
+            <VBox class="sapUiSmallMarginTop">
+                <HBox>
+                    <Button text="{i18n>searchSuppliersBtn}" press=".onSearchSuppliers" width="5rem" class="sapUiTinyMarginEnd"/>
+                    <Button text="{i18n>clearFiltersBtn}" press=".onClearFilters" width="5rem"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </FlexBox>
+</core:FragmentDefinition>

@@ -14,10 +14,11 @@
         <f:content>
 			<VBox>
 				<HBox>
-					<VBox class="sapUiSmallMarginEnd">
-                    
-                    </VBox>
-				</HBox>
+                    <c:Fragment
+                        fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.SupplierFilters"
+                        type="XML"
+                    />
+                </HBox>
 				<c:Fragment
                 	fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.SuppliersTable"
                 	type="XML"

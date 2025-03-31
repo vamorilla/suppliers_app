@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "com/bootcamp/sapui5/suppliersapp/model/models"
-], (UIComponent, models) => {
+    "com/bootcamp/sapui5/suppliersapp/model/models",
+     "com/bootcamp/sapui5/suppliersapp/utils/SuppliersHelper"
+], (UIComponent, models, SuppliersHelper) => {
     "use strict";
 
     return UIComponent.extend("com.bootcamp.sapui5.suppliersapp.Component", {
@@ -21,6 +22,13 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
-        }
+
+            this.setInitModel(); 
+        },
+
+        setInitModel: function () {
+            SuppliersHelper.init(this.getModel());
+            SuppliersHelper.setInitLocalDataModel(this);
+        } 
     });
 });
