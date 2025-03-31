@@ -9,7 +9,7 @@
         direction="Row"
         alignItems="End"
         justifyContent="Start"
-        class="sapUiSmallMarginBottom"
+        class="sapUiSmallMarginTop"
     >
         <HBox justifyContent="End" class="sapUiSmallMarginBottom">
             <VBox class="sapUiSmallMarginEnd">
