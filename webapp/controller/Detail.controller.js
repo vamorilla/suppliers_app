@@ -3,11 +3,14 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/Fragment",
     "com/bootcamp/sapui5/suppliersapp/utils/SuppliersHelper",
-    "sap/m/MessageBox"
-], (Controller, JSONModel, Fragment, SuppliersHelper, MessageBox) => {
+    "sap/m/MessageBox",
+    "com/bootcamp/sapui5/suppliersapp/model/formatter",
+], (Controller, JSONModel, Fragment, SuppliersHelper, MessageBox, formatter) => {
     "use strict";
 
     return Controller.extend("com.bootcamp.sapui5.suppliersapp.controller.Detail", {
+        formatter: formatter,
+        
         onInit() {
             let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
@@ -79,7 +82,7 @@ sap.ui.define([
             const aFieldsToValidate = [
                 { path: "/ProductName", statePath: "/ProductNameState" },
                 { path: "/UnitPrice", statePath: "/UnitPriceState" },
-                { path: "/QuantityPerUnit", statePath: "/UnitsInStockState" },
+                { path: "/UnitsInStock", statePath: "/UnitsInStockState" },
                 { path: "/CategoryID", statePath: "/CategoryIDState" }
             ];
 
