@@ -48,8 +48,7 @@
             <Select
                 selectedKey="{ProductModel>/CategoryID}"
                 items="{
-                    path: '/Categories',
-                    model: 'mainModel'
+                    path: '/Categories'
                 }"
                 forceSelection="true"
                 change=".onCategoryChange"

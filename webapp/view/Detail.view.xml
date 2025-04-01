@@ -20,11 +20,11 @@
 			    emptySpanM="0"
 			    emptySpanS="0"
 			    columnsXL="2"
-			    columnsL="1"
+			    columnsL="2"
 			    columnsM="1"
 			    singleContainerFullSize="false" >
 			    <lf:content>
-				    <core:Title/>
+				    <core:Title text="{i18n>companyFormTitle}"/>
 				    <Label text="{i18n>companyColumnName}" />
 				    <Text text="{CompanyName}" />
 
@@ -37,7 +37,7 @@
                     <Label text="{i18n>countryColumnName}" />
 				    <Text text="{Country}" />
 
-				    <core:Title />
+				    <core:Title text="{i18n>contactFormTitle}" />
                     <Label text="{i18n>contactColumnName}" />
 				    <Text text="{ContactName}" />
 				    <Label text="{i18n>contactTitleColumnName}" />
