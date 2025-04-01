@@ -59,13 +59,39 @@ sap.ui.define([
         },
 
         onCreateProduct: async function () {
-            const oProduct = this.getView().getModel("ProductModel").getData();
+            const oProductModel = this.getView().getModel("ProductModel");
+            const oProduct = oProductModel.getData();
+            let bIsValid= true;
+
+            const aFieldsToValidate = [
+                { path: "/ProductName", statePath: "/ProductNameState" },
+                { path: "/UnitPrice", statePath: "/UnitPriceState" },
+                { path: "/UnitsInStock", statePath: "/UnitsInStockState" },
+                { path: "/CategoryID", statePath: "/CategoryIDState" }
+            ];
+
+            aFieldsToValidate.forEach(field => {
+                const value = oProductModel.getProperty(field.path);
+            
+                if (!value) {
+                    oProductModel.setProperty(field.statePath, "Error");
+                    bIsValid = false;
+                } else {
+                    oProductModel.setProperty(field.statePath, "None");
+                }
+            });
+
+            if (!bIsValid) {
+                sap.m.MessageToast.show("Please fill all required fields.");
+                return;
+            }
 
             const oBinding = this.byId("productsTable").getBinding("items");
             const aProducts = oBinding.getModel().getProperty(oBinding.getPath());
 
             const isCreating = this.getView().getModel("viewFlags").getProperty("/isCreating");
 
+            //TODO: Research to use a local copy model that simulates adding a product
             if (isCreating) {
                 aProducts.push(oProduct);
                 oBinding.getModel().refresh();

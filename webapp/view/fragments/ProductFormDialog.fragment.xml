@@ -15,8 +15,8 @@
             <Label text="{i18n>productNameLabel}" required="true" />
             <Input
                 value="{ProductModel>/ProductName}"
+                valueState="{ProductModel>/ProductNameState}"
                 placeholder="{i18n>productNamePholder}"
-                valueState="{= ${ProductModel>/ProductName} ? 'None' : 'Error' }"
                 valueStateText="{i18n>errorText}"
                 editable="{viewFlags>/isCreating}"
             />
@@ -25,9 +25,9 @@
             <Label text="{i18n>productPriceLabel}" required="true" />
             <Input
                 value="{ProductModel>/UnitPrice}"
+                valueState="{ProductModel>/UnitPriceState}"
                 type="Number"
                 placeholder="{i18n>productPricePholder}"
-                valueState="{= ${ProductModel>/UnitPrice} ? 'None' : 'Error' }"
                 valueStateText="{i18n>errorText}"
                 editable="{viewFlags>/isCreating}"
             />
@@ -36,9 +36,9 @@
             <Label text="{i18n>Stock}" required="true" />
             <Input
                 value="{ProductModel>/UnitsInStock}"
+                valueState="{ProductModel>/UnitsInStockState}"
                 type="Number"
                 placeholder="{i18n>productStockPholder}"
-                valueState="{= ${ProductModel>/UnitsInStock} ? 'None' : 'Error' }"
                 valueStateText="{i18n>errorText}"
                 editable="{viewFlags>/isCreating}"
             />
@@ -47,12 +47,12 @@
             <Label text="Category" required="true" />
             <Select
                 selectedKey="{ProductModel>/CategoryID}"
+                valueState="{ProductModel>/CategoryIDState}"
                 items="{
                     path: '/Categories'
                 }"
                 forceSelection="true"
                 change=".onCategoryChange"
-                valueStateText="{i18n>errorText}"
                 enabled="{viewFlags>/isCreating}"
             >
                 <core:Item key="{CategoryID}" text="{CategoryName}" />
