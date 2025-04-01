@@ -2,8 +2,9 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/Fragment",
-    "com/bootcamp/sapui5/suppliersapp/utils/SuppliersHelper"
-], (Controller, JSONModel, Fragment, SuppliersHelper) => {
+    "com/bootcamp/sapui5/suppliersapp/utils/SuppliersHelper",
+    "sap/m/MessageBox"
+], (Controller, JSONModel, Fragment, SuppliersHelper, MessageBox) => {
     "use strict";
 
     return Controller.extend("com.bootcamp.sapui5.suppliersapp.controller.Detail", {
@@ -11,7 +12,8 @@ sap.ui.define([
             let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
         },
-
+        
+        //_ is a suggested syntactical convention for private controller functions
         _onObjectMatched: function (oEvent) {
             let sSupplierID = oEvent.getParameter("arguments").SupplierID;
 
@@ -109,6 +111,44 @@ sap.ui.define([
 
             const oDialog = await this._pDialog;
             oDialog.close();
+        },
+
+        onDeleteProduct: function (oEvent) {
+            const iIndex = this._getProductIndexFromEvent(oEvent);
+        
+            if (iIndex === null) return;
+        
+            this._confirmAndDeleteProduct(iIndex);
+        },
+
+        _getProductIndexFromEvent: function (oEvent) {
+            const oButton = oEvent.getSource();
+            const oContext = oButton.getBindingContext("SimulatedProductsModel");
+        
+            if (!oContext) return null;
+        
+            const sPath = oContext.getPath();
+            // Removes the slash and converts the path to a number
+            const iIndex = parseInt(sPath.replace("/", ""), 10);
+        
+            return isNaN(iIndex) ? null : iIndex;
+        },
+
+        _confirmAndDeleteProduct: function (iIndex) {
+            const oModel = this.getView().getModel("SimulatedProductsModel");
+            const aData = oModel.getData();
+        
+            MessageBox.confirm("Are you sure you want to delete this product?", {
+                title: "Confirm Deletion",
+                actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                onClose: function (sAction) {
+                    if (sAction === MessageBox.Action.OK) {
+                        aData.splice(iIndex, 1);
+                        oModel.refresh();
+                        MessageToast.show("Product deleted");
+                    }
+                }
+            });
         },
 
         onCloseDialog: async function () {

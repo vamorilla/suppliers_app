@@ -76,6 +76,9 @@
 				<Column>
                 	<Text text="{i18n>category}" />
             	</Column>
+				<Column width="4rem">
+                	<Text />
+            	</Column>
         	</columns>
         	<items>
             	<ColumnListItem type="Active">
@@ -85,6 +88,12 @@
                     	<Text text="{SimulatedProductsModel>UnitPrice}" />
                     	<Text text="{SimulatedProductsModel>UnitsInStock}" />
 						<Text text="{SimulatedProductsModel>CategoryID}" />
+						<Button
+    						icon="sap-icon://delete"
+    						type="Transparent"
+    						tooltip="{i18n>deleteProduct}"
+    						press=".onDeleteProduct"
+						/>
                 	</cells>
             	</ColumnListItem>
         	</items>
