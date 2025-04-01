@@ -13,20 +13,12 @@
     >
         <HBox justifyContent="End" class="sapUiSmallMarginBottom">
             <VBox class="sapUiSmallMarginEnd">
-                <Label text="{i18n>supplierIdLabel}" labelFor="idSupplier" />
+                <Label text="{i18n>supplierSearchLabel}" labelFor="searchInput" />
                 <Input
-                    id="idSupplier"
-                    width="200px"
-                    value="{LocalDataModel>/idInputValue}"
-                    placeholder="{i18n>idInputPlaceholder}"/>
-            </VBox>
-            <VBox class="sapUiSmallMarginEnd">
-                <Label text="{i18n>companyNamelabel}" labelFor="companyNameInput" />
-                <Input
-                    id="companyNameInput"
-                    width="200px"
-                    value="{LocalDataModel>/nameInputValue}"
-                    placeholder="{i18n>cNamePlaceholder}"/>
+                    id="searchInput"
+                    width="250px"
+                    value="{LocalDataModel>/searchValue}"
+                    placeholder="{i18n>supplierSearchPlaceholder}" />
             </VBox>
             <VBox class="sapUiSmallMarginTop">
                 <HBox>

@@ -33,25 +33,28 @@ sap.ui.define([
             let oTable = this.getView().byId("table");
             let oBinding = oTable.getBinding();
 
-            let values = this.getOwnerComponent().getModel("LocalDataModel").getData();
-           
-            if(values.idInputValue){
-                aFilter.push(new Filter("SupplierID", FilterOperator.EQ, values.idInputValue));
-            }          
+            let sSearchValue  = this.getOwnerComponent().getModel("LocalDataModel").getProperty("/searchValue");
 
-            if(values.nameInputValue){
-                aFilter.push(new Filter("CompanyName", FilterOperator.Contains, values.nameInputValue));
-            }                     
-           
-            oBinding.filter(aFilter);
+            //If the input is numeric, filter by SupplierID and CompanyName
+            if (!isNaN(sSearchValue)) {
+                aFilter.push(new Filter("SupplierID", FilterOperator.EQ, sSearchValue));
+            }
+            //Always filter by text
+            aFilter.push(new Filter("CompanyName", FilterOperator.Contains, sSearchValue));
+
+            const oFilter = new Filter({
+                filters: aFilter,
+                and: false
+            });
+        
+            oBinding.filter([oFilter]);
         },
 
         onClearFilters: function () {
             const oModel = this.getOwnerComponent().getModel("LocalDataModel");
         
-            // Clear values
-            oModel.setProperty("/idInputValue", "");
-            oModel.setProperty("/nameInputValue", "");
+            // Clear searchValue
+            oModel.setProperty("/searchValue", "");
         
             const oTable = this.byId("table");
             const oBinding = oTable.getBinding();

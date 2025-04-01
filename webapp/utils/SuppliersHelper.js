@@ -13,8 +13,7 @@ sap.ui.define([
 
         setInitLocalDataModel: function (oComponent) {
             oComponent.setModel(new JSONModel({
-                idInputValue: '',
-                nameInputValue: ''
+                searchValue: ''
             }), "LocalDataModel");
         },
 
