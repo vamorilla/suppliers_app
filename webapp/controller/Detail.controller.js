@@ -33,7 +33,7 @@ sap.ui.define([
                 }
             });
         },
-
+        
         onAddProduct: function () {
             const oComponent = this.getOwnerComponent();
             SuppliersHelper.setEmptyProductModel(oComponent);
@@ -42,7 +42,7 @@ sap.ui.define([
 
         onProductPress: function (oEvent) {
             const oItem = oEvent.getParameter("listItem");
-            const oContext = oItem.getBindingContext();
+            const oContext = oItem.getBindingContext("SimulatedProductsModel");
             const oProduct = oContext.getObject();
           
             const oProductModel = SuppliersHelper.createProductModelFromExisting(oProduct);

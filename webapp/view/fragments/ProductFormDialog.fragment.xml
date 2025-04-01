@@ -35,7 +35,7 @@
             <!-- Stock -->
             <Label text="{i18n>Stock}" required="true" />
             <Input
-                value="{ProductModel>/QuantityPerUnit}"
+                value="{ProductModel>/UnitsInStock}"
                 valueState="{ProductModel>/UnitsInStockState}"
                 type="Number"
                 placeholder="{i18n>productStockPholder}"
