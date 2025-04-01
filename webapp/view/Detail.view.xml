@@ -86,7 +86,13 @@
 					    <Text text="{SimulatedProductsModel>ProductID}" />
                     	<Text text="{SimulatedProductsModel>ProductName}" />
                     	<Text text="{SimulatedProductsModel>UnitPrice}" />
-                    	<Text text="{SimulatedProductsModel>UnitsInStock}" />
+						<ObjectNumber
+                        number="{
+                            parts:[{path:'SimulatedProductsModel>UnitsInStock'}]
+                        }"
+                        emphasized="false"
+                        state="{ path:'SimulatedProductsModel>UnitsInStock', formatter: '.formatter.getStateStock' }"
+                        />
 						<Text text="{SimulatedProductsModel>CategoryID}" />
 						<Button
     						icon="sap-icon://delete"
