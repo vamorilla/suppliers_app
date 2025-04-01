@@ -4,13 +4,14 @@ sap.ui.define([
     "sap/ui/core/library",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/Filter",
-], (Controller, Sorter, CoreLibrary, FilterOperator, Filter ) => {
+], (Controller, CoreLibrary, FilterOperator, Filter ) => {
     "use strict";
 
     const SortOrder = CoreLibrary.SortOrder;
 
     return Controller.extend("com.bootcamp.sapui5.suppliersapp.controller.Suppliers", {
         onInit() {
+            this.oRouter = this.getOwnerComponent().getRouter();
         },
 
         clearAllSortings: function() {
@@ -27,7 +28,7 @@ sap.ui.define([
 			}
 		},
 
-        onSearchSuppliers: async function (oEvent) {
+        onSearchSuppliers: async function () {
             let aFilter = [];
 
             let oTable = this.getView().byId("table");
@@ -49,7 +50,7 @@ sap.ui.define([
         onClearFilters: function () {
             const oModel = this.getOwnerComponent().getModel("LocalDataModel");
         
-            // Limpiar valores
+            // Clear values
             oModel.setProperty("/idInputValue", "");
             oModel.setProperty("/nameInputValue", "");
         
@@ -57,5 +58,20 @@ sap.ui.define([
             const oBinding = oTable.getBinding();
             oBinding.filter([]);
         },
+
+        onRowSelected: function (oEvent) {
+            const oTable = this.byId("table");
+            const iIndex = oEvent.getParameter("rowIndex");
+
+            const oContext = oTable.getContextByIndex(iIndex);
+
+            if (oContext) {
+                const oSupplier = oContext.getObject();
+        
+                this.oRouter.navTo("detail", {
+                    SupplierID: oSupplier.SupplierID
+                });
+            }
+        }
     });
 });

@@ -1,0 +1,73 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    
+    <Dialog
+        id="productDialog"
+        title="{= ${viewFlags>/isCreating} ? ${i18n>createProduct} : ${i18n>seeProduct} }"
+        class="sapUiContentPadding"
+        draggable="true"
+        resizable="true"
+    >
+        <VBox>
+            <!-- Product Name -->
+            <Label text="{i18n>productNameLabel}" required="true" />
+            <Input
+                value="{ProductModel>/ProductName}"
+                valueState="{ProductModel>/ProductNameState}"
+                placeholder="{i18n>productNamePholder}"
+                valueStateText="{i18n>errorText}"
+                editable="{viewFlags>/isCreating}"
+            />
+
+            <!-- Price -->
+            <Label text="{i18n>productPriceLabel}" required="true" />
+            <Input
+                value="{ProductModel>/UnitPrice}"
+                valueState="{ProductModel>/UnitPriceState}"
+                type="Number"
+                placeholder="{i18n>productPricePholder}"
+                valueStateText="{i18n>errorText}"
+                editable="{viewFlags>/isCreating}"
+            />
+
+            <!-- Stock -->
+            <Label text="{i18n>Stock}" required="true" />
+            <Input
+                value="{ProductModel>/UnitsInStock}"
+                valueState="{ProductModel>/UnitsInStockState}"
+                type="Number"
+                placeholder="{i18n>productStockPholder}"
+                valueStateText="{i18n>errorText}"
+                editable="{viewFlags>/isCreating}"
+            />
+
+            <!-- Category -->
+            <Label text="Category" required="true" />
+            <Select
+                selectedKey="{ProductModel>/CategoryID}"
+                valueState="{ProductModel>/CategoryIDState}"
+                items="{
+                    path: '/Categories'
+                }"
+                forceSelection="true"
+                change=".onCategoryChange"
+                enabled="{viewFlags>/isCreating}"
+            >
+                <core:Item key="{CategoryID}" text="{CategoryName}" />
+            </Select>
+        </VBox>
+        <beginButton>
+            <Button
+                text="{i18n>createBtnDialog}"
+                type="Emphasized"
+                press=".onCreateProduct"
+                visible="{= ${viewFlags>/isCreating} }"
+            />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press=".onCloseDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

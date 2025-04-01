@@ -1,0 +1,102 @@
+<mvc:View controllerName="com.bootcamp.sapui5.suppliersapp.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:lf="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+    <Page id="detailPage" class="sapUiContentPadding">
+        <VBox width="100%" class="sapUiMediumMarginBottom">
+            <lf:SimpleForm id="SimpleFormDisplay354wideDual"
+			    editable="false"
+			    layout="ResponsiveGridLayout"
+			    title="{i18n>detailTitle}"
+			    labelSpanXL="4"
+			    labelSpanL="3"
+			    labelSpanM="4"
+			    labelSpanS="12"
+			    adjustLabelSpan="false"
+			    emptySpanXL="0"
+			    emptySpanL="4"
+			    emptySpanM="0"
+			    emptySpanS="0"
+			    columnsXL="2"
+			    columnsL="2"
+			    columnsM="1"
+			    singleContainerFullSize="false" >
+			    <lf:content>
+				    <core:Title text="{i18n>companyFormTitle}"/>
+				    <Label text="{i18n>companyColumnName}" />
+				    <Text text="{CompanyName}" />
+
+				    <Label text="{i18n>address}" />
+				    <Text text="{Address}" />
+
+				    <Label text="{i18n>cityColumnName}" />
+				    <Text text="{City}" />
+
+                    <Label text="{i18n>countryColumnName}" />
+				    <Text text="{Country}" />
+
+				    <core:Title text="{i18n>contactFormTitle}" />
+                    <Label text="{i18n>contactColumnName}" />
+				    <Text text="{ContactName}" />
+				    <Label text="{i18n>contactTitleColumnName}" />
+				    <Text text="{ContactTitle}" />
+
+                    <Label text="{i18n>phoneColumnName}" />
+				    <Text text="{Phone}" />
+			    </lf:content>
+		    </lf:SimpleForm>
+        </VBox>
+		<HBox justifyContent="SpaceBetween">
+        	<Title text="{i18n>productsTitle}" />
+        	<Button text="{i18n>addProduct}" icon="sap-icon://add" class="sapUiSmallMarginBottom" press=".onAddProduct" />
+        </HBox>
+		<Table
+        	id="productsTable"
+        	items="{SimulatedProductsModel>/}"
+        	mode="SingleSelectMaster"
+        	growing="true"
+        	growingThreshold="10"
+        	itemPress=".onProductPress"
+    	>
+        	<columns>
+			   <Column>
+                	<Text text="{i18n>productid}" />
+            	</Column>
+            	<Column>
+                	<Text text="{i18n>productName}" />
+            	</Column>
+            	<Column>
+                	<Text text="{i18n>unitPrice}" />
+            	</Column>
+            	<Column>
+                	<Text text="{i18n>unitsInStock}" />
+            	</Column>
+				<Column>
+                	<Text text="{i18n>category}" />
+            	</Column>
+				<Column width="4rem">
+                	<Text />
+            	</Column>
+        	</columns>
+        	<items>
+            	<ColumnListItem type="Active">
+                	<cells>
+					    <Text text="{SimulatedProductsModel>ProductID}" />
+                    	<Text text="{SimulatedProductsModel>ProductName}" />
+                    	<Text text="{SimulatedProductsModel>UnitPrice}" />
+                    	<Text text="{SimulatedProductsModel>UnitsInStock}" />
+						<Text text="{SimulatedProductsModel>CategoryID}" />
+						<Button
+    						icon="sap-icon://delete"
+    						type="Transparent"
+    						tooltip="{i18n>deleteProduct}"
+    						press=".onDeleteProduct"
+						/>
+                	</cells>
+            	</ColumnListItem>
+        	</items>
+    	</Table>
+    </Page>
+</mvc:View>

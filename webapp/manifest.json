@@ -95,13 +95,26 @@
           "target": [
             "TargetSuppliers"
           ]
-        }
+        },
+        {
+          "name": "detail",
+          "pattern": "detail/{SupplierID}",
+          "target": [
+            "TargetSuppliers",
+              "detail"
+          ]
+      }
       ],
       "targets": {
         "TargetSuppliers": {
           "id": "Suppliers",
           "name": "Suppliers"
-        }
+        },
+        "detail": {
+          "viewId": "detail",
+          "viewName": "Detail",
+          "viewLevel": 2
+      }
       }
     },
     "rootView": {
