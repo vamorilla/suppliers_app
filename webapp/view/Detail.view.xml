@@ -3,7 +3,7 @@
     xmlns="sap.m"
     xmlns:f="sap.f"
     xmlns:lf="sap.ui.layout.form"
-	xmlns:core="sap.ui.core">
+	xmlns:c="sap.ui.core">
     <Page id="detailPage" class="sapUiContentPadding">
         <VBox width="60%" class="sapUiMediumMarginBottom">
             <lf:SimpleForm id="SimpleFormDisplay354wideDual"
@@ -24,7 +24,7 @@
 			    columnsM="1"
 			    singleContainerFullSize="false" >
 			    <lf:content>
-				    <core:Title text="{i18n>companyFormTitle}"/>
+				    <c:Title text="{i18n>companyFormTitle}"/>
 				    <Label text="{i18n>companyColumnName}" design="Bold" />
 				    <Text text="{CompanyName}" />
 
@@ -37,7 +37,7 @@
                     <Label text="{i18n>countryColumnName}"  design="Bold" />
 				    <Text text="{Country}" />
 
-				    <core:Title text="{i18n>contactFormTitle}" />
+				    <c:Title text="{i18n>contactFormTitle}" />
                     <Label text="{i18n>contactColumnName}" design="Bold" />
 				    <Text text="{ContactName}" />
 				    <Label text="{i18n>contactTitleColumnName}" design="Bold" />
@@ -52,57 +52,9 @@
         	<Title text="{i18n>productsTitle}" />
         	<Button text="{i18n>addProduct}" icon="sap-icon://add" class="sapUiSmallMarginBottom" press=".onAddProduct" />
         </HBox>
-		<Table
-        	id="productsTable"
-        	items="{SimulatedProductsModel>/}"
-        	mode="SingleSelectMaster"
-        	growing="true"
-        	growingThreshold="10"
-        	itemPress=".onProductPress"
-    	>
-        	<columns>
-			   <Column>
-                	<Text text="{i18n>productid}" />
-            	</Column>
-            	<Column>
-                	<Text text="{i18n>productName}" />
-            	</Column>
-            	<Column>
-                	<Text text="{i18n>unitPrice}" />
-            	</Column>
-            	<Column>
-                	<Text text="{i18n>unitsInStock}" />
-            	</Column>
-				<Column>
-                	<Text text="{i18n>category}" />
-            	</Column>
-				<Column width="4rem">
-                	<Text />
-            	</Column>
-        	</columns>
-        	<items>
-            	<ColumnListItem type="Active">
-                	<cells>
-					    <Text text="{SimulatedProductsModel>ProductID}" />
-                    	<Text text="{SimulatedProductsModel>ProductName}" />
-                    	<Text text="{SimulatedProductsModel>UnitPrice}" />
-						<ObjectNumber
-                        number="{
-                            parts:[{path:'SimulatedProductsModel>UnitsInStock'}]
-                        }"
-                        emphasized="false"
-                        state="{ path:'SimulatedProductsModel>UnitsInStock', formatter: '.formatter.getStateStock' }"
-                        />
-						<Text text="{SimulatedProductsModel>CategoryID}" />
-						<Button
-    						icon="sap-icon://delete"
-    						type="Transparent"
-    						tooltip="{i18n>deleteProduct}"
-    						press=".onDeleteProduct"
-						/>
-                	</cells>
-            	</ColumnListItem>
-        	</items>
-    	</Table>
+		<c:Fragment
+            fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.ProductsTable"
+            type="XML"
+        />
     </Page>
 </mvc:View>

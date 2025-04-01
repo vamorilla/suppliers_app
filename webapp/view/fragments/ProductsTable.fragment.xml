@@ -1,0 +1,60 @@
+<c:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:lf="sap.ui.layout.form"
+    xmlns:c="sap.ui.core"
+>
+    <Table
+        	id="productsTable"
+        	items="{SimulatedProductsModel>/}"
+        	mode="SingleSelectMaster"
+        	growing="true"
+        	growingThreshold="10"
+        	itemPress=".onProductPress"
+    >
+        	<columns>
+			   <Column>
+                	<Text text="{i18n>productid}" />
+            	</Column>
+            	<Column>
+                	<Text text="{i18n>productName}" />
+            	</Column>
+            	<Column>
+                	<Text text="{i18n>unitPrice}" />
+            	</Column>
+            	<Column>
+                	<Text text="{i18n>unitsInStock}" />
+            	</Column>
+				<Column>
+                	<Text text="{i18n>category}" />
+            	</Column>
+				<Column width="4rem">
+                	<Text />
+            	</Column>
+        	</columns>
+        	<items>
+            	<ColumnListItem type="Active">
+                	<cells>
+					    <Text text="{SimulatedProductsModel>ProductID}" />
+                    	<Text text="{SimulatedProductsModel>ProductName}" />
+                    	<Text text="{SimulatedProductsModel>UnitPrice}" />
+						<ObjectNumber
+                        number="{
+                            parts:[{path:'SimulatedProductsModel>UnitsInStock'}]
+                        }"
+                        emphasized="false"
+                        state="{ path:'SimulatedProductsModel>UnitsInStock', formatter: '.formatter.getStateStock' }"
+                        />
+						<Text text="{SimulatedProductsModel>CategoryID}" />
+						<Button
+    						icon="sap-icon://delete"
+    						type="Transparent"
+    						tooltip="{i18n>deleteProduct}"
+    						press=".onDeleteProduct"
+						/>
+                	</cells>
+            	</ColumnListItem>
+        	</items>
+    	</Table>
+</c:FragmentDefinition>
