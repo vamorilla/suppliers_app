@@ -44,7 +44,7 @@ sap.ui.define([
             const oItem = oEvent.getParameter("listItem");
             const oContext = oItem.getBindingContext("SimulatedProductsModel");
             const oProduct = oContext.getObject();
-          
+            console.log(oProduct)
             const oProductModel = SuppliersHelper.createProductModelFromExisting(oProduct);
             this.getOwnerComponent().setModel(oProductModel, "ProductModel");
             this._openProductDialog(false);

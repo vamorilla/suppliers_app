@@ -71,7 +71,7 @@
                 	<Text text="{i18n>unitPrice}" />
             	</Column>
             	<Column>
-                	<Text text="{i18n>quantityPerUnit}" />
+                	<Text text="{i18n>unitsInStock}" />
             	</Column>
 				<Column>
                 	<Text text="{i18n>category}" />
@@ -83,7 +83,7 @@
 					    <Text text="{SimulatedProductsModel>ProductID}" />
                     	<Text text="{SimulatedProductsModel>ProductName}" />
                     	<Text text="{SimulatedProductsModel>UnitPrice}" />
-                    	<Text text="{SimulatedProductsModel>QuantityPerUnit}" />
+                    	<Text text="{SimulatedProductsModel>UnitsInStock}" />
 						<Text text="{SimulatedProductsModel>CategoryID}" />
                 	</cells>
             	</ColumnListItem>
