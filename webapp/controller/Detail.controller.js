@@ -21,6 +21,17 @@ sap.ui.define([
                     expand: "Products,Products/Category"
                 }
             });
+
+            const oModel = this.getView().getModel();
+           //TODO: Research to include the categoryName in the model
+            oModel.read(`/Suppliers(${sSupplierID})/Products`, {
+                success: (oData) => {
+                    SuppliersHelper.setSimulatedProductsModel(this.getOwnerComponent(), oData.results);
+                },
+                error: () => {
+                    SuppliersHelper.setSimulatedProductsModel(this.getOwnerComponent(), []);
+                }
+            });
         },
 
         onAddProduct: function () {
@@ -66,7 +77,7 @@ sap.ui.define([
             const aFieldsToValidate = [
                 { path: "/ProductName", statePath: "/ProductNameState" },
                 { path: "/UnitPrice", statePath: "/UnitPriceState" },
-                { path: "/UnitsInStock", statePath: "/UnitsInStockState" },
+                { path: "/QuantityPerUnit", statePath: "/UnitsInStockState" },
                 { path: "/CategoryID", statePath: "/CategoryIDState" }
             ];
 
@@ -86,15 +97,14 @@ sap.ui.define([
                 return;
             }
 
-            const oBinding = this.byId("productsTable").getBinding("items");
-            const aProducts = oBinding.getModel().getProperty(oBinding.getPath());
+            const oModel = this.getView().getModel("SimulatedProductsModel");
+            const aProducts = oModel.getData(); 
 
             const isCreating = this.getView().getModel("viewFlags").getProperty("/isCreating");
 
-            //TODO: Research to use a local copy model that simulates adding a product
             if (isCreating) {
                 aProducts.push(oProduct);
-                oBinding.getModel().refresh();
+                oModel.refresh();
             }
 
             const oDialog = await this._pDialog;

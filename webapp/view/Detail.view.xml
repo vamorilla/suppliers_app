@@ -54,7 +54,7 @@
         </HBox>
 		<Table
         	id="productsTable"
-        	items="{Products}"
+        	items="{SimulatedProductsModel>/}"
         	mode="SingleSelectMaster"
         	growing="true"
         	growingThreshold="10"
@@ -80,11 +80,11 @@
         	<items>
             	<ColumnListItem type="Active">
                 	<cells>
-					    <Text text="{ProductID}" />
-                    	<Text text="{ProductName}" />
-                    	<Text text="{UnitPrice}" />
-                    	<Text text="{QuantityPerUnit}" />
-						<Text text="{Category/CategoryName}" />
+					    <Text text="{SimulatedProductsModel>ProductID}" />
+                    	<Text text="{SimulatedProductsModel>ProductName}" />
+                    	<Text text="{SimulatedProductsModel>UnitPrice}" />
+                    	<Text text="{SimulatedProductsModel>QuantityPerUnit}" />
+						<Text text="{SimulatedProductsModel>CategoryID}" />
                 	</cells>
             	</ColumnListItem>
         	</items>

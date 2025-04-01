@@ -35,6 +35,11 @@ sap.ui.define([
 
         createProductModelFromExisting: function (oProduct) {
             return new JSONModel(Object.assign({}, oProduct));
+        },
+
+        setSimulatedProductsModel: function (oComponent, aProducts) {
+            const oModel = new JSONModel(aProducts || []);
+            oComponent.setModel(oModel, "SimulatedProductsModel");
         }
 	};
 });
