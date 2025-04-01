@@ -5,7 +5,7 @@
     xmlns:lf="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
     <Page id="detailPage" class="sapUiContentPadding">
-        <VBox width="100%" class="sapUiMediumMarginBottom">
+        <VBox width="60%" class="sapUiMediumMarginBottom">
             <lf:SimpleForm id="SimpleFormDisplay354wideDual"
 			    editable="false"
 			    layout="ResponsiveGridLayout"
@@ -25,25 +25,25 @@
 			    singleContainerFullSize="false" >
 			    <lf:content>
 				    <core:Title text="{i18n>companyFormTitle}"/>
-				    <Label text="{i18n>companyColumnName}" />
+				    <Label text="{i18n>companyColumnName}" design="Bold" />
 				    <Text text="{CompanyName}" />
 
-				    <Label text="{i18n>address}" />
+				    <Label text="{i18n>address}"  design="Bold" />
 				    <Text text="{Address}" />
 
-				    <Label text="{i18n>cityColumnName}" />
+				    <Label text="{i18n>cityColumnName}"  design="Bold" />
 				    <Text text="{City}" />
 
-                    <Label text="{i18n>countryColumnName}" />
+                    <Label text="{i18n>countryColumnName}"  design="Bold" />
 				    <Text text="{Country}" />
 
 				    <core:Title text="{i18n>contactFormTitle}" />
-                    <Label text="{i18n>contactColumnName}" />
+                    <Label text="{i18n>contactColumnName}" design="Bold" />
 				    <Text text="{ContactName}" />
-				    <Label text="{i18n>contactTitleColumnName}" />
+				    <Label text="{i18n>contactTitleColumnName}" design="Bold" />
 				    <Text text="{ContactTitle}" />
 
-                    <Label text="{i18n>phoneColumnName}" />
+                    <Label text="{i18n>phoneColumnName}" design="Bold" />
 				    <Text text="{Phone}" />
 			    </lf:content>
 		    </lf:SimpleForm>

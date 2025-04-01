@@ -1,6 +1,5 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/Sorter",
     "sap/ui/core/library",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/Filter",

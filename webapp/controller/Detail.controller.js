@@ -79,7 +79,7 @@ sap.ui.define([
             const aFieldsToValidate = [
                 { path: "/ProductName", statePath: "/ProductNameState" },
                 { path: "/UnitPrice", statePath: "/UnitPriceState" },
-                { path: "/QuantityPerUnit", statePath: "/UnitsInStockState" },
+                { path: "/UnitsInStock", statePath: "/UnitsInStockState" },
                 { path: "/CategoryID", statePath: "/CategoryIDState" }
             ];
 
