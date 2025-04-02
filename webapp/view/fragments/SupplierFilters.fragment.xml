@@ -22,7 +22,7 @@
             </VBox>
             <VBox class="sapUiSmallMarginTop">
                 <HBox>
-                    <Button text="{i18n>searchSuppliersBtn}" press=".onSearchSuppliers" width="5rem" class="sapUiTinyMarginEnd"/>
+                    <Button text="{i18n>searchBtn}" press=".onSearchSuppliers" width="5rem" class="sapUiTinyMarginEnd"/>
                     <Button text="{i18n>clearFiltersBtn}" press=".onClearFilters" width="5rem"/>
                 </HBox>
             </VBox>

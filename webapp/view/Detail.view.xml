@@ -49,9 +49,15 @@
 		    </lf:SimpleForm>
         </VBox>
 		<HBox justifyContent="SpaceBetween">
-        	<Title text="{i18n>productsTitle}" />
-        	<Button text="{i18n>addProduct}" icon="sap-icon://add" class="sapUiSmallMarginBottom" press=".onAddProduct" />
-        </HBox>
+        	<c:Fragment
+                fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.ProductFilters"
+                type="XML"
+            />
+			<VBox class="sapUiMediumMarginTop">
+        		<Button text="{i18n>addProduct}" icon="sap-icon://add" class="sapUiSmallMarginBottom" press=".onAddProduct" />
+			</VBox>
+		</HBox>
+		<Title text="{i18n>productsTitle}" />
 		<c:Fragment
             fragmentName="com.bootcamp.sapui5.suppliersapp.view.fragments.ProductsTable"
             type="XML"

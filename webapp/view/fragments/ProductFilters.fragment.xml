@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:c="sap.ui.core">
+
+     <FlexBox
+        wrap="Wrap"
+        direction="Row"
+        alignItems="End"
+        justifyContent="Start"
+        class="sapUiSmallMarginTop"
+    >
+        <HBox justifyContent="End" class="sapUiSmallMarginBottom">
+            <VBox class="sapUiSmallMarginEnd">
+               <Label labelFor="categoryId" text="{i18n>categorySearchLabel}"/>
+                <MultiInput
+                    id="categoryId"
+                    showValueHelp="false"
+                    placeholder="{i18n>categorySearchPlaceholder}"
+                    suggestionItems="{
+                        path: '/Categories',
+                        sorter: { path: 'CategoryName' }
+                    }"
+                    suggestionItemSelected=".onCategorySuggestionSelected"
+                >
+                    <c:Item key="{CategoryID}" text="{CategoryID} - {CategoryName}" />
+                </MultiInput>
+            </VBox>
+            <VBox class="sapUiSmallMarginTop">
+                <HBox>
+                    <Button text="{i18n>searchBtn}" press=".onSearchProduct" width="5rem" class="sapUiTinyMarginEnd"/>
+                    <Button text="{i18n>clearFiltersBtn}" press=".onClearPruductFilters" width="5rem"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </FlexBox>
+</core:FragmentDefinition>

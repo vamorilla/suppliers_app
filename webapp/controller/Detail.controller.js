@@ -5,7 +5,10 @@ sap.ui.define([
     "com/bootcamp/sapui5/suppliersapp/utils/SuppliersHelper",
     "sap/m/MessageBox",
     "com/bootcamp/sapui5/suppliersapp/model/formatter",
-], (Controller, JSONModel, Fragment, SuppliersHelper, MessageBox, formatter) => {
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/Filter",
+    "sap/m/Token"
+], (Controller, JSONModel, Fragment, SuppliersHelper, MessageBox, formatter, FilterOperator, Filter, Token) => {
     "use strict";
 
     return Controller.extend("com.bootcamp.sapui5.suppliersapp.controller.Detail", {
@@ -110,6 +113,8 @@ sap.ui.define([
             if (isCreating) {
                 aProducts.push(oProduct);
                 oModel.refresh();
+
+                this.onClearPruductFilters();
             }
 
             const oDialog = await this._pDialog;
@@ -157,6 +162,60 @@ sap.ui.define([
         onCloseDialog: async function () {
             const oDialog = await this._pDialog;
             oDialog.close();
-        }
+        },
+
+        onSearchProduct: function () {
+            const oMultiInput = this.byId("categoryId");
+            const aTokens = oMultiInput.getTokens();
+        
+            const aCategoryIDs = aTokens.map(token => token.getKey());
+        
+            const oBinding = this.byId("productsTable").getBinding("items");
+
+            const aFilters = [];
+            aCategoryIDs.forEach(id => {
+                aFilters.push(new Filter("CategoryID", FilterOperator.EQ, id));
+            });
+            
+            const oFilter = new Filter({
+                filters: aFilters,
+                and: false 
+            });
+            
+            oBinding.filter([oFilter]);
+        },
+        
+        onClearPruductFilters: function () {
+            const oMultiInput = this.byId("categoryId");
+            oMultiInput.removeAllTokens();
+        
+            this.byId("productsTable").getBinding("items").filter([]);
+        },
+
+        _addCategoryToken: function (oCategory) {
+            const oMultiInput = this.byId("categoryId");
+        
+            // Avoid duplicate tokens
+            const aTokens = oMultiInput.getTokens();
+            const bExists = aTokens.some(token => token.getKey() === oCategory.CategoryID.toString());
+            if (bExists) return;
+        
+            oMultiInput.addToken(new Token({
+                key: oCategory.CategoryID,
+                text: `${oCategory.CategoryID} - ${oCategory.CategoryName}`
+            }));
+        },
+
+        onCategorySuggestionSelected: function (oEvent) {
+            const oItem = oEvent.getParameter("selectedItem");
+            
+            const oCategory = {
+                CategoryID: oItem.getKey(),
+                //Only save the CategoryName
+                CategoryName: oItem.getText().split(" - ")[1]
+            };
+        
+            this._addCategoryToken(oCategory);
+        },
     });
 });
