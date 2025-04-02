@@ -18,12 +18,12 @@
                 <MultiInput
                     id="categoryId"
                     showValueHelp="false"
-                    selectedKey="{LocalDataModel>/selectedItem}"
                     placeholder="{i18n>categorySearchPlaceholder}"
                     suggestionItems="{
                         path: '/Categories',
                         sorter: { path: 'CategoryName' }
                     }"
+                    suggestionItemSelected=".onCategorySuggestionSelected"
                 >
                     <c:Item key="{CategoryID}" text="{CategoryID} - {CategoryName}" />
                 </MultiInput>
