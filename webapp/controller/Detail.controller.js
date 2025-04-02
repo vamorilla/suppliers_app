@@ -113,6 +113,8 @@ sap.ui.define([
             if (isCreating) {
                 aProducts.push(oProduct);
                 oModel.refresh();
+
+                this.onClearPruductFilters();
             }
 
             const oDialog = await this._pDialog;
